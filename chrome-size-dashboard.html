@@ -51,7 +51,7 @@ var MINUTES = 1000 * 60;
 (function() {
   for (var i = 0; i < BRANCH_DATES.length; ++i) {
     var now = new Date;
-    var then = new Date("Oct 12, 2017");
+    var then = new Date(BRANCH_DATES[i]);
     var days = Math.floor((then - now) / (60 * MINUTES * 24));
     if (days >= 0) {
       branch_name.textContent = 'M' + (MILESTONE_START + i);
