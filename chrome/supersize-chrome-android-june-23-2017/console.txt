@@ -47,6 +47,7 @@ Index | Running Total | Section@Address | PSS | Path
 6)    4091191 (97.7%) *@Group      35967           Blink (Other) (count=173)
 7)    4185539 (100.0%) *@Group      94347           Other (count=878)
 
+>>> Print(canned_queries.TemplatesByName())
 Showing 8,390 symbols (8,390 unique) with total pss: 7391698 bytes
 .text=6.91mb     .rodata=3.76kb     .data*=137kb      .bss=15.8kb     total=7.05mb
 Number of unique paths: 7112
