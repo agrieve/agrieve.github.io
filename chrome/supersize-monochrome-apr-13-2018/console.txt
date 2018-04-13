@@ -1,0 +1,203 @@
+>>> Print(canned_queries.CategorizeGenerated(size_info.symbols.WherePathMatches(r'v8/')))
+Showing 2 symbols (2 unique) with total pss: 1748096 bytes
+Histogram of symbols based on PSS:
+    [65536,131072): 1   [1048576,2097152): 1
+.text=1.43mb     .rodata=82.9kb     .data.rel.ro=163kb      .data=904 bytes  .bss=284 bytes  total=1.67mb
+Number of unique paths: 1540
+
+Section Legend: t=.text, r=.rodata, R=.data.rel.ro, d=.data, b=.bss
+Index | Running Total | Section@Address | PSS | Path
+------------------------------------------------------------
+0)    1657848 (94.8%) *@Group      1657848         Blink (Other) (count=33893)
+1)    1748096 (100.0%) *@Group      90248           DevTools (count=1282)
+
+
+
+>>> Print(canned_queries.CategorizeGenerated(size_info.symbols.WherePathMatches(r'v8/'))[0])
+Showing 33,893 symbols (22,397 unique) with total pss: 1657848 bytes
+Histogram of symbols based on PSS:
+    (0,1): 3706     [4,8): 4798     [32,64): 3716     [256,512): 1088    [2048,4096): 10
+    [1,2): 1576    [8,16): 3879    [64,128): 2244    [512,1024): 178     [4096,8192): 3
+    [2,4): 2592   [16,32): 7441   [128,256): 2620   [1024,2048): 41     [8192,16384): 1
+.text=1.34mb     .rodata=79.3kb     .data.rel.ro=162kb      .data=712 bytes  .bss=284 bytes  total=1.58mb
+Number of unique paths: 1533
+
+Section Legend: t=.text, r=.rodata, R=.data.rel.ro, d=.data, b=.bss
+Index | Running Total | Section@Address | PSS | Path
+------------------------------------------------------------
+0)       8948 (0.5%)  R@0x29d3cc0  8948           $root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_webgl2_rendering_context.cc
+             blink::installV8WebGL2RenderingContextTemplate::V8WebGL2RenderingContextConstants
+1)      14212 (0.9%)  t@0x226b438  5264           $root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_webgl2_rendering_context.cc
+             blink::V8WebGL2RenderingContext::texSubImage2DMethodCallback
+2)      19296 (1.2%)  t@0x226a05c  5084           $root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_webgl2_rendering_context.cc
+             blink::V8WebGL2RenderingContext::texImage2DMethodCallback
+3)      24036 (1.4%)  R@0x29d76d8  4740           $root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_webgl_rendering_context.cc
+             blink::installV8WebGLRenderingContextTemplate::V8WebGLRenderingContextConstants
+4)      27832 (1.7%)  t@0x21f2e34  3796           $root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_media_track_constraint_set.cc
+             blink::V8MediaTrackConstraintSet::ToImpl
+5)      31496 (1.9%)  R@Group      3664           $root_gen_dir/third_party/blink/renderer/bindings/core/v8/v8_window.cc
+             blink::V8WindowLazyDataAttributes (count=2)
+6)      35160 (2.1%)  R@Group      3664           $root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_window_partial.cc
+             blink::V8WindowLazyDataAttributes (count=2)
+7)      38772 (2.3%)  t@0x225f244  3612           $root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_webgl2_rendering_context.cc
+             blink::V8WebGL2RenderingContext::texImage3DMethodCallback
+8)      42356 (2.6%)  R@0x29d5fe0  3584           $root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_webgl2_rendering_context.cc
+             blink::V8WebGL2RenderingContextMethods
+9)      45680 (2.8%)  t@0x2260060  3324           $root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_webgl2_rendering_context.cc
+             blink::V8WebGL2RenderingContext::texSubImage3DMethodCallback
+10)     48156 (2.9%)  t@0x227cbb0  2476           $root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_webgl_rendering_context.cc
+             blink::V8WebGLRenderingContext::texSubImage2DMethodCallback
+...
+
+
+
+>>> Print(canned_queries.CategorizeGenerated(size_info.symbols.WherePathMatches(r'v8/'))[1])
+Showing 1,282 symbols (933 unique) with total pss: 90248 bytes
+Histogram of symbols based on PSS:
+    (0,1): 174   [2,4): 72     [8,16): 163    [32,64): 173   [128,256): 60    [512,1024): 32
+    [1,2): 44    [4,8): 165   [16,32): 217   [64,128): 118   [256,512): 56   [1024,2048): 8
+.text=82.6kb     .rodata=3.57kb     .data.rel.ro=1818 bytes .data=192 bytes  total=88.1kb
+Number of unique paths: 7
+
+Section Legend: t=.text, r=.rodata, R=.data.rel.ro, d=.data
+Index | Running Total | Section@Address | PSS | Path
+------------------------------------------------------------
+0)       1504 (1.7%)  t@0x19bb18c  1504           $root_gen_dir/v8/src/inspector/protocol/Debugger.cpp
+             v8_inspector::protocol::Debugger::DispatcherImpl::DispatcherImpl
+1)       2940 (3.3%)  t@0x19c360c  1436           $root_gen_dir/v8/src/inspector/protocol/Runtime.cpp
+             v8_inspector::protocol::Runtime::DispatcherImpl::callFunctionOn
+2)       4256 (4.7%)  t@0x19c3f88  1316           $root_gen_dir/v8/src/inspector/protocol/Runtime.cpp
+             v8_inspector::protocol::Runtime::DispatcherImpl::evaluate
+3)       5564 (6.2%)  t@0x19b9f14  1308           $root_gen_dir/v8/src/inspector/protocol/Debugger.cpp
+             v8_inspector::protocol::Debugger::DispatcherImpl::setBreakpointByUrl
+4)       6840 (7.6%)  t@0x19b83a4  1276           $root_gen_dir/v8/src/inspector/protocol/Debugger.cpp
+             v8_inspector::protocol::Debugger::DispatcherImpl::evaluateOnCallFrame
+5)       8036 (8.9%)  t@0x19b7650  1196           $root_gen_dir/v8/src/inspector/protocol/Debugger.cpp
+             v8_inspector::protocol::Debugger::ScriptParsedNotification::toValue const
+6)       9152 (10.1%) t@0x19b7198  1116           $root_gen_dir/v8/src/inspector/protocol/Debugger.cpp
+             v8_inspector::protocol::Debugger::ScriptFailedToParseNotification::toValue const
+7)      10260 (11.4%) t@0x19c5184  1108           $root_gen_dir/v8/src/inspector/protocol/Runtime.cpp
+             v8_inspector::protocol::Runtime::DispatcherImpl::runScript
+8)      11280 (12.5%) t@0x19b51c4  1020           $root_gen_dir/v8/src/inspector/protocol/Protocol.cpp
+             v8_inspector::protocol::parseToken<>
+9)      12278 (13.6%) t@0x19bfd08  998            $root_gen_dir/v8/src/inspector/protocol/Runtime.cpp
+             v8_inspector::protocol::Runtime::RemoteObject::fromValue
+10)     13274 (14.7%) t@0x19ba7d8  996            $root_gen_dir/v8/src/inspector/protocol/Debugger.cpp
+             v8_inspector::protocol::Debugger::DispatcherImpl::setScriptSource
+...
+
+
+>>> Print(canned_queries.TemplatesByName(size_info.symbols.WherePathMatches(r'^v8')))
+Showing 1,301 symbols (1,301 unique) with total pss: 730115 bytes
+Histogram of symbols based on PSS:
+      {0}: 7      [4,8): 7      [32,64): 152     [256,512): 207    [2048,4096): 48   [16384,32768): 4
+    (0,1): 92    [8,16): 20    [64,128): 199    [512,1024): 147    [4096,8192): 20
+    [2,4): 2    [16,32): 37   [128,256): 273   [1024,2048): 82    [8192,16384): 4
+.text=695kb      .rodata=701 bytes  .data.rel.ro=16.7kb     .bss=68 bytes   total=713kb
+Number of unique paths: 314
+
+Section Legend: t=.text, r=.rodata, R=.data.rel.ro, b=.bss
+Index | Running Total | Section@Address | PSS | Path
+------------------------------------------------------------
+0)      21270 (2.9%)  *@Group      21270           v8::internal::BodyDescriptorApply<> (count=5)
+1)      40186 (5.5%)  *@Group      18916           v8::internal::JsonStringifier::Serialize_<> (count=2)
+2)      58304 (8.0%)  *@Group      18118           v8::internal::wasm::WasmFullDecoder<>::DecodeFunctionBody (count=3)
+3)      75053 (10.3%) *@Group      16749           std::__ndk1::__sort<> (count=29)
+4)      84909 (11.6%) *@Group      9856            v8::internal::ParserBase<>::ParsePrimaryExpression (count=2)
+5)      93857 (12.9%) *@Group      8948            v8::internal::ParserBase<>::ParseLeftHandSideExpression (count=2)
+6)     102693 (14.1%) *@Group      8835            std::__ndk1::deque<>::__add_back_capacity (count=55)
+7)     111067 (15.2%) *@Group      8374            v8::internal::Deserializer<>::ReadData (count=2)
+8)     118437 (16.2%) *@Group      7370            std::__ndk1::vector<>::__emplace_back_slow_path<> (count=68)
+9)     125665 (17.2%) *@Group      7227            std::__ndk1::vector<>::__push_back_slow_path<> (count=373)
+10)    132753 (18.2%) *@Group      7088            v8::internal::ParserBase<>::ParseAssignmentExpression (count=2)
+11)    139665 (19.1%) *@Group      6912            std::__ndk1::__insertion_sort_incomplete<> (count=29)
+12)    146257 (20.0%) *@Group      6592            v8::internal::ParserBase<>::ParseMemberExpressionContinuation (count=2)
+13)    151931 (20.8%) *@Group      5674            v8::internal::JSObjectWalkVisitor<>::StructureWalk (count=3)
+14)    157279 (21.5%) *@Group      5348            v8::internal::JsonParser<>::ParseJsonObject (count=2)
+15)    162511 (22.3%) *@Group      5232            v8::internal::TypedElementsAccessor<>::CopyElementsFromTypedArray (count=11)
+16)    167535 (22.9%) *@Group      5024            v8::internal::InternalStringToIntDouble<> (count=11)
+17)    172430 (23.6%) *@Group      4895            std::__ndk1::vector<>::__append (count=45)
+18)    177312 (24.3%) *@Group      4882            v8::internal::wasm::LiftoffCompiler::EmitBinOp<> (count=59)
+19)    181784 (24.9%) *@Group      4472            v8::internal::TypedElementsAccessor<>::CopyTypedArrayElementsSliceImpl (count=11)
+20)    186229 (25.5%) *@Group      4445            std::__ndk1::unordered_map<>::operator[] (count=41)
+21)    190655 (26.1%) *@Group      4426            v8::internal::ParserBase<>::ParseObjectPropertyDefinition (count=2)
+22)    194937 (26.7%) *@Group      4281            std::__ndk1::__sort5<> (count=29)
+23)    199204 (27.3%) *@Group      4266            std::__ndk1::__sort3<> (count=29)
+24)    203458 (27.9%) *@Group      4254            v8::internal::JsonParser<>::ParseJsonValue (count=2)
+25)    207634 (28.4%) *@Group      4176            v8::internal::ParserBase<>::ParseUnaryExpression (count=2)
+26)    211767 (29.0%) *@Group      4133            std::__ndk1::__tree<>::__emplace_unique_key_args<> (count=79)
+27)    215887 (29.6%) *@Group      4120            v8::internal::SetViewValue<> (count=10)
+28)    219913 (30.1%) *@Group      4026            v8::internal::JsonParser<>::SlowScanJsonString<> (count=4)
+29)    223793 (30.7%) *@Group      3880            v8::internal::GetViewValue<> (count=10)
+30)    227583 (31.2%) *@Group      3790            v8::internal::HashTable<>::Rehash (count=15)
+31)    231327 (31.7%) *@Group      3744            v8::internal::ParserBase<>::ParsePropertyName (count=2)
+32)    234923 (32.2%) *@Group      3596            v8::internal::ParserBase<>::ParseMemberWithNewPrefixesExpression (count=2)
+33)    238487 (32.7%) *@Group      3564            v8::internal::compiler::PipelineImpl::Run<> (count=42)
+34)    241923 (33.1%) *@Group      3435            v8::internal::compiler::Operator1<>::PrintParameter const (count=80)
+35)    245277 (33.6%) *@Group      3353            v8::internal::wasm::Decoder::read_leb_tail<> (count=120)
+36)    248561 (34.0%) *@Group      3284            v8::internal::ElementsAccessorBase<>::CollectValuesOrEntriesImpl (count=5)
+37)    251829 (34.5%) *@Group      3268            v8::internal::ParserBase<>::ParseBinaryExpression (count=2)
+38)    255037 (34.9%) *@Group      3208            std::__ndk1::__sort4<> (count=29)
+39)    258235 (35.4%) *@Group      3198            v8::internal::ElementsAccessorBase<>::SetLengthImpl (count=8)
+40)    261425 (35.8%) *@Group      3190            v8::internal::LiveObjectVisitor::VisitBlackObjectsNoFail<> (count=4)
+41)    264609 (36.2%) *@Group      3184            v8::internal::JSObject::PreventExtensionsWithTransition<> (count=3)
+42)    267691 (36.7%) *@Group      3082            v8::internal::String::WriteToFlat<> (count=2)
+43)    270655 (37.1%) *@Group      2963            std::__ndk1::__insertion_sort_3<> (count=29)
+44)    273567 (37.5%) *@Group      2912            v8::internal::LookupIterator::Start<> (count=2)
+45)    276461 (37.9%) *@Group      2894            std::__ndk1::vector<>::__swap_out_circular_buffer (count=102)
+46)    279347 (38.3%) *@Group      2886            v8::internal::ParserBase<>::ParseVariableDeclarations (count=2)
+47)    282221 (38.7%) *@Group      2874            v8::internal::ElementsAccessorBase<>::GrowCapacity (count=22)
+48)    285031 (39.0%) *@Group      2810            v8::internal::wasm::WasmDecoder<>::OpcodeLength (count=2)
+49)    287831 (39.4%) *@Group      2800            v8::internal::ParserBase<>::ParseExpressionCoverGrammar (count=2)
+50)    290573 (39.8%) *@Group      2742            std::__ndk1::vector<>::insert (count=10)
+51)    293289 (40.2%) *@Group      2716            v8::internal::wasm::ThreadImpl::ExecuteLoad<> (count=14)
+52)    295981 (40.5%) *@Group      2691            std::__ndk1::__function::__func<>::__clone const (count=144)
+53)    298647 (40.9%) *@Group      2666            v8::internal::ParserBase<>::ParseConditionalExpression (count=2)
+54)    301305 (41.3%) *@Group      2658            v8::internal::InternalStringToDouble<> (count=2)
+55)    303911 (41.6%) *@Group      2606            v8::internal::ParserBase<>::ParseClassLiteral (count=2)
+56)    306491 (42.0%) *@Group      2580            v8::internal::LiveObjectVisitor::VisitBlackObjects<> (count=1)
+57)    309057 (42.3%) *@Group      2566            v8::internal::TypedElementsAccessor<>::IncludesValueImpl (count=11)
+58)    311585 (42.7%) *@Group      2528            v8::internal::TypedElementsAccessor<>::TryCopyElementsFastNumber (count=9)
+59)    314091 (43.0%) *@Group      2506            v8::internal::ParserBase<>::ParseArguments (count=2)
+60)    316563 (43.4%) *@Group      2472            v8::internal::ElementsAccessorBase<>::PrependElementIndicesImpl (count=22)
+61)    319030 (43.7%) *@Group      2466            std::__ndk1::vector<>::insert<> (count=12)
+62)    321476 (44.0%) *@Group      2446            v8::internal::SearchRegExpMultiple<> (count=2)
+63)    323890 (44.4%) *@Group      2414            std::__ndk1::__inplace_merge<> (count=4)
+64)    326246 (44.7%) *@Group      2356            v8::internal::TypedElementsAccessor<>::CopyElementsHandleSlow (count=11)
+65)    328600 (45.0%) *@Group      2354            v8::internal::ParserBase<>::ParseClassPropertyDefinition (count=2)
+66)    330944 (45.3%) *@Group      2344            v8::internal::DateParser::ParseES5DateTime<> (count=2)
+67)    333284 (45.6%) *@Group      2340            v8::internal::Deserializer<>::PostProcessNewObject (count=2)
+68)    335616 (46.0%) *@Group      2332            v8::internal::compiler::SimplifiedOperatorGlobalCache::CheckIfOperator<>::CheckIfOperator (count=39)
+69)    337872 (46.3%) *@Group      2256            v8::internal::ConcurrentMarkingVisitor::VisitLeftTrimmableArray<> (count=1)
+70)    340112 (46.6%) *@Group      2240            v8::internal::ParserBase<>::ParseForAwaitStatement (count=2)
+71)    342348 (46.9%) *@Group      2236            v8::internal::ParserBase<>::ParseForStatement (count=2)
+72)    344524 (47.2%) *@Group      2176            v8::internal::ElementsAccessorBase<>::TransitionElementsKindImpl (count=19)
+73)    346644 (47.5%) *@Group      2120            v8::internal::TypedElementsAccessor<>::IndexOfValueImpl (count=11)
+74)    348720 (47.8%) *@Group      2076            v8::internal::TypedElementsAccessor<>::CollectValuesOrEntriesImpl (count=11)
+75)    350794 (48.0%) *@Group      2074            v8::internal::TypedElementsAccessor<>::CopyElementsHandleImpl (count=11)
+76)    352838 (48.3%) *@Group      2044            v8::internal::ParserBase<>::ParseAndClassifyIdentifier (count=2)
+77)    354866 (48.6%) *@Group      2028            v8::internal::JsonParser<>::ParseJsonArray (count=2)
+78)    356866 (48.9%) *@Group      2000            std::__ndk1::vector<>::push_back (count=373)
+79)    358856 (49.2%) *@Group      1990            v8::internal::ParserBase<>::ParseArrayLiteral (count=2)
+80)    360837 (49.4%) *@Group      1981            std::__ndk1::__deque_base<>::clear (count=59)
+81)    362807 (49.7%) *@Group      1970            v8::internal::wasm::LiftoffCompiler::EmitUnOp<> (count=19)
+82)    364759 (50.0%) *@Group      1952            v8::internal::compiler::Operator1<> [vtable] (count=65)
+83)    366689 (50.2%) *@Group      1930            v8::internal::String::VisitFlat<> (count=9)
+84)    368585 (50.5%) *@Group      1896            v8::internal::DateParser::Parse<> (count=2)
+85)    370433 (50.7%) *@Group      1848            v8::internal::TypedElementsAccessor<> [vtable] (count=11)
+86)    372271 (51.0%) *@Group      1837            std::__ndk1::__hash_table<>::__rehash (count=73)
+87)    374106 (51.2%) *@Group      1834            std::__ndk1::__tree<>::__find_equal<> (count=19)
+88)    375938 (51.5%) *@Group      1832            v8::internal::TypedElementsAccessor<>::LastIndexOfValueImpl (count=11)
+89)    377768 (51.7%) *@Group      1830            v8_inspector::protocol::Array<>::toValue (count=21)
+90)    379568 (52.0%) *@Group      1800            std::__ndk1::__function::__func<> [vtable] (count=72)
+91)    381368 (52.2%) *@Group      1800            v8::internal::JsonParser<>::ParseJsonNumber (count=1)
+92)    383146 (52.5%) *@Group      1778            v8::internal::HandleApiCallHelper<> (count=2)
+93)    384902 (52.7%) *@Group      1756            v8::internal::ElementsAccessorBase<>::Splice (count=22)
+94)    386646 (53.0%) *@Group      1743            std::__ndk1::vector<>::emplace_back<> (count=68)
+95)    388382 (53.2%) *@Group      1736            v8::internal::wasm::WasmFullDecoder<>::DecodeSimdOpcode (count=3)
+96)    390098 (53.4%) *@Group      1716            v8::internal::AstTraversalVisitor<>::VisitNoStackOverflowCheck (count=4)
+97)    391808 (53.7%) *@Group      1710            v8_inspector::protocol::buildValue<> (count=2)
+98)    393486 (53.9%) *@Group      1678            std::__ndk1::vector<>::reserve (count=63)
+99)    395164 (54.1%) *@Group      1678            v8::internal::ParserBase<>::ParseStatement (count=2)
+100)   396828 (54.4%) *@Group      1664            v8::internal::ParserBase<>::ParseArrowFunctionLiteral (count=2)
+...
