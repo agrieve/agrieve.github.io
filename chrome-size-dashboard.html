@@ -32,6 +32,11 @@
     font-size: 80pt;
     text-align: center;
   }
+  #snippet_div {
+    margin-top: 200px;
+    font-size: 100pt;
+    text-align: center;
+  }
 
 </style>
 </head>
@@ -43,6 +48,7 @@
   <span id=branch_name>M##</span> branch in <span style="color: red" id=days_span></span>
 </div>
 <div id=time_div></div>
+<div id=snippet_div style="display:none">📜 Snippet Reminder 📜</div>
 </body>
 <script>
 var MILESTONE_START = 63;
@@ -62,6 +68,13 @@ var BRANCH_DATES = [
   'Jul 19, 2022',  // NEED TO UPDATE :)
   ];
 var MINUTES = 1000 * 60;
+var MONDAY_HOLIDAYS = [
+  new Date('Oct 08, 2018'),
+  new Date('Nov 12, 2018'),
+  new Date('Nov 12, 2018'),
+  new Date('Dec 24, 2018'),
+  new Date('Dec 31, 2018')
+  ];
 (function() {
   for (var i = 0; i < BRANCH_DATES.length; ++i) {
     var now = new Date;
@@ -91,7 +104,21 @@ function reloadPage() {
   location.href = location.href;
 }
 function updateTime() {
-  time_div.textContent = new Date().toLocaleTimeString().replace(/:\d\d /, ' ');
+  var now = new Date();
+  time_div.textContent = now.toLocaleTimeString().replace(/:\d\d /, ' ');
+  var showSnippets = now.getDay() == 1;
+  if (now.getDay() == 5) {
+    // Friday before long weekend.
+    var nextMonday = new Date(Date.now() + 3*24*60*MINUTES)
+    for (var holiday of MONDAY_HOLIDAYS) {
+      if (holiday.getYear() == nextMonday.getYear() &&
+          holiday.getMonth() == nextMonday.getMonth() &&
+          holiday.getDate() == nextMonday.getDate()) {
+        showSnippets = true;
+      }
+    }
+  }
+  snippet_div.style.display = showSnippets ? '' : 'none';
 }
 updateTime();
 setInterval(checkFocus, 1000);
