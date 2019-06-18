@@ -8,7 +8,7 @@
     margin: 0;
     font-family: sans-serif;
   }
-  iframe {
+  .size-iframe {
     transform-origin: 0 0;
     transform: scale(1.5, 1.5);
     width:67%;
@@ -16,7 +16,11 @@
     border:0;
     margin-top:-214px;
   }
-
+  .memory-iframe {
+    width:90%; /* Set so that it doesn't scroll */
+    height:calc(100vh - 20px); /* 20px of padding for some unknown reason */
+    border:0;
+  }
   .iframe-holder {
     overflow: hidden;
     position: relative;
@@ -40,15 +44,18 @@
 
 </style>
 </head>
-<body tabindex=0>
-<div class="iframe-holder">
-<iframe scrolling=no src="https://chromeperf.appspot.com/report?sid=e55e2189727a5bc410196e8cb7492879f9a224dc1383c6cdf9409edc0a8a1050&num_points=800"></iframe>
+<body tabindex=0 display:>
+<div id=page1 style="display:none">
+  <div class="iframe-holder">
+  <iframe class="size-iframe" scrolling=no src="https://chromeperf.appspot.com/report?sid=e55e2189727a5bc410196e8cb7492879f9a224dc1383c6cdf9409edc0a8a1050&num_points=800"></iframe>
+  </div>
+  <div class="branch">
+    <span id=branch_name>M##</span> branch in <span style="color: red" id=days_span></span>
+  </div>
+  <div id=time_div></div>
+  <div id=snippet_div style="display:none">📜 Snippet Reminder 📜</div>
 </div>
-<div class="branch">
-  <span id=branch_name>M##</span> branch in <span style="color: red" id=days_span></span>
-</div>
-<div id=time_div></div>
-<div id=snippet_div style="display:none">📜 Snippet Reminder 📜</div>
+<iframe id=page2 class="memory-iframe" scrolling=no src="https://datastudio.google.com/embed/reporting/1ywCS2zlmxUOzoe4o2zM06CStdNo3lUEC/page/zfFb"></iframe>
 </body>
 <script>
 var MILESTONE_START = 63;
@@ -135,11 +142,24 @@ function updateTime() {
   }
   snippet_div.style.display = showSnippets ? '' : 'none';
 }
+curVisibile = false;
+function swapDivs() {
+  curVisibile = !curVisibile;
+  if (curVisibile) {
+    page1.style.display='none';
+    page2.style.display='';
+  } else {
+    page1.style.display='';
+    page2.style.display='none';
+  }
+}
 updateTime();
+swapDivs();
 setInterval(checkFocus, 1000);
 setInterval(refreshIframes, 10 * MINUTES);
 setInterval(reloadPage, 60 * MINUTES * 24);
 setInterval(updateTime, 1000);
+setInterval(swapDivs, MINUTES / 2);
 
 </script>
 </html>
