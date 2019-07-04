@@ -9,12 +9,9 @@
     font-family: sans-serif;
   }
   .size-iframe {
-    transform-origin: 0 0;
-    transform: scale(1.5, 1.5);
-    width:67%;
-    height:600px;
+    width:1920px;
+    height:424px;
     border:0;
-    margin-top:-214px;
   }
   .memory-iframe {
     width:90%; /* Set so that it doesn't scroll */
@@ -22,9 +19,9 @@
     border:0;
   }
   .iframe-holder {
-    overflow: hidden;
-    position: relative;
-    height: 424px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   .branch {
     margin-top: 80px;
@@ -47,7 +44,7 @@
 <body tabindex=0 display:>
 <div id=page1 style="display:none">
   <div class="iframe-holder">
-  <iframe class="size-iframe" scrolling=no src="https://chromeperf.appspot.com/report?sid=e55e2189727a5bc410196e8cb7492879f9a224dc1383c6cdf9409edc0a8a1050&num_points=800"></iframe>
+  <iframe class="size-iframe" scrolling=no src="https://datastudio.google.com/embed/reporting/18HN5esOG3VZFxCbooSzbd_zUmviKDgC4/page/U58t"></iframe>
   </div>
   <div class="branch">
     <span id=branch_name>M##</span> branch in <span style="color: red" id=days_span></span>
