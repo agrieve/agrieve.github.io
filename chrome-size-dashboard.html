@@ -9,7 +9,7 @@
     font-family: sans-serif;
   }
   .size-iframe {
-    width:1920px;
+    width:100%;
     height:424px;
     border:0;
   }
@@ -38,11 +38,15 @@
     font-size: 100pt;
     text-align: center;
   }
+  #page1, #page2 {
+    position : fixed;
+    width:100%;
+  }
 
 </style>
 </head>
 <body tabindex=0 display:>
-<div id=page1 style="display:none">
+<div id=page1>
   <div class="iframe-holder">
   <iframe class="size-iframe" scrolling=no src="https://datastudio.google.com/embed/reporting/18HN5esOG3VZFxCbooSzbd_zUmviKDgC4/page/U58t"></iframe>
   </div>
@@ -141,12 +145,13 @@ function updateTime() {
 curVisibile = false;
 function swapDivs() {
   curVisibile = !curVisibile;
+
   if (curVisibile) {
-    page1.style.display='none';
-    page2.style.display='';
+    page1.style.visibility = 'hidden'
+    page2.style.visibility = ''
   } else {
-    page1.style.display='';
-    page2.style.display='none';
+    page1.style.visibility = ''
+    page2.style.visibility = 'hidden'
   }
 }
 updateTime();
@@ -155,7 +160,7 @@ setInterval(checkFocus, 1000);
 setInterval(refreshIframes, 10 * MINUTES);
 setInterval(reloadPage, 60 * MINUTES * 24);
 setInterval(updateTime, 1000);
-setInterval(swapDivs, MINUTES / 2);
+setInterval(swapDivs, MINUTES / 3);
 
 </script>
 </html>
