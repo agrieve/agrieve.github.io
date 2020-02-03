@@ -160,7 +160,15 @@ setInterval(checkFocus, 1000);
 setInterval(refreshIframes, 10 * MINUTES);
 setInterval(reloadPage, 60 * MINUTES * 24);
 setInterval(updateTime, 1000);
-setInterval(swapDivs, MINUTES / 3);
+
+var page = new URLSearchParams(window.location.search).get('page');
+if (page) {
+  if (page == '1') {
+    swapDivs();
+  }
+} else {
+  setInterval(swapDivs, MINUTES / 3);
+}
 
 </script>
 </html>
