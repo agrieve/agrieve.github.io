@@ -48,7 +48,12 @@
 <body tabindex=0 display:>
 <div id=page1>
   <div class="iframe-holder">
-  <iframe class="size-iframe" scrolling=no src="https://datastudio.google.com/embed/reporting/18HN5esOG3VZFxCbooSzbd_zUmviKDgC4/page/U58t"></iframe>
+<!-- broken:
+    <iframe class="size-iframe" scrolling=no src="https://datastudio.google.com/embed/reporting/18HN5esOG3VZFxCbooSzbd_zUmviKDgC4/page/U58t"></iframe>
+-->
+    <div class="size-iframe iframe-holder">
+       <img src="logo.png">
+    </div>
   </div>
   <div class="branch">
     <span id=branch_name>M##</span> branch in <span style="color: red" id=days_span></span>
@@ -56,70 +61,36 @@
   <div id=time_div></div>
   <div id=snippet_div style="display:none">📜 Snippet Reminder 📜</div>
 </div>
+<!-- broken:
 <iframe id=page2 class="memory-iframe" scrolling=no src="https://datastudio.google.com/embed/reporting/1ywCS2zlmxUOzoe4o2zM06CStdNo3lUEC/page/zfFb"></iframe>
+ -->
 </body>
 <script>
-var MILESTONE_START = 63;
-var BRANCH_DATES = [
-  'Oct 12, 2017',
-  'Nov 30, 2017',
-  'Jan 18, 2018',
-  'Mar 1, 2018',
-  'Apr 12, 2018',
-  'May 24, 2018',
-  'Jul 19, 2018',
-  'Aug 30, 2018',
-  'Oct 11, 2018',
-  'Nov 29, 2018',
-  'Jan 24, 2019',
-  'Mar 7, 2019',
-  'Apr 18, 2019',
-  'May 30, 2019',
-  'Jul 25, 2019',
-  'Sep 5, 2019',
-  'Oct 17, 2019',
-  'Dec 5, 2019',
-  'Jan 30, 2020',
-  'Mar 12, 2020',
-  'Apr 23, 2020',
-  'Jun 4, 2020',
-  'Jul 30, 2020',
-  'Aug 20, 2020',
-  'Oct 1, 2020',
-  'Nov 12, 2020',
-  'Jan 14, 2021',
-  'Feb 25, 2021',
-  'Apr 8, 2021',
-  'May 20, 2021',
-  'Jul 15, 2021',
-  'Aug 26, 2021',
-  'Oct 7, 2021',
-  'Nov 18, 2021',
-  'Jan 20, 2022',
-  'Sep 10, 2125',
-  ];
 var MINUTES = 1000 * 60;
 var MONDAY_HOLIDAYS = [
-  new Date('Feb 18, 2019'),
-  new Date('Apr 22, 2019'),
-  new Date('May 20, 2019'),
-  new Date('Jul 01, 2019'),
-  new Date('Aug 05, 2019'),
-  new Date('Sep 02, 2019'),
-  new Date('Oct 14, 2019'),
+  new Date('Aug 1, 2022'),
+  new Date('Sept 5, 2022'),
+  new Date('Oct 10, 2022'),
+  new Date('Dec 26, 2022'),
   ];
-(function() {
-  for (var i = 0; i < BRANCH_DATES.length; ++i) {
-    var now = new Date;
-    var then = new Date(BRANCH_DATES[i]);
-    var days = Math.floor((then - now) / (60 * MINUTES * 24));
+
+async function updateBranchInfo() {
+  let schduleResponse = await fetch('https://chromiumdash.appspot.com/fetch_milestone_schedule?offset=-1&n=4');
+  let scheduleJson = await schduleResponse.json();
+  console.log(scheduleJson);
+  let mstones = scheduleJson['mstones']
+  var now = new Date();
+  for (let mstone of mstones) {
+    var then = new Date(mstone['branch_point']);
+    var days = Math.ceil((then - now) / (60 * MINUTES * 24));
     if (days >= 0) {
-      branch_name.textContent = 'M' + (MILESTONE_START + i);
+      branch_name.textContent = 'M' + mstone['mstone'];
       days_span.textContent = days + ' days';
       break;
     }
   }
-})();
+}
+
 function checkFocus() {
   if (!document.activeElement) return;
   if (document.activeElement.tagName == 'IFRAME') {
@@ -165,13 +136,14 @@ function swapDivs() {
     page2.style.visibility = 'hidden'
   }
 }
+updateBranchInfo();
 updateTime();
-swapDivs();
 setInterval(checkFocus, 1000);
 setInterval(refreshIframes, 10 * MINUTES);
 setInterval(reloadPage, 60 * MINUTES * 24);
 setInterval(updateTime, 1000);
 
+/*
 var page = new URLSearchParams(window.location.search).get('page');
 if (page) {
   if (page == '1') {
@@ -179,7 +151,7 @@ if (page) {
   }
 } else {
   setInterval(swapDivs, MINUTES / 3);
-}
+}*/
 
 </script>
 </html>
